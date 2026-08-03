@@ -155,7 +155,8 @@ bool vfastrht_ctr_del(vfastrht_ctrT* restrict table, const vfastrht_keyT* const 
     while(r < VFASTRHT_KEY_LENGTH){
         const size_t idx = vfastrht__idx(key, r);
 
-        if(table[idx].key && !memcmp(table[idx].key, key, VFASTRHT_KEY_LENGTH) && --table[idx].ctr){
+        if(table[idx].key && !memcmp(table[idx].key, key, VFASTRHT_KEY_LENGTH)){
+            if(--table[idx].ctr) return true;
             free(table[idx].key);
             table[idx].key = NULL;
             return true;
