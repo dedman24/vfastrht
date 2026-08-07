@@ -68,7 +68,7 @@ void vfastrht_table_destroy(vfastrhtT* const restrict table){
 }
 
 static size_t vfastrht__idx(const vfastrht_keyT* const restrict key, unsigned short r){
-    return ((char*)key)[r];
+    return ((unsigned char*)key)[r];
 }
 
 bool vfastrht_del(vfastrhtT* restrict table, const vfastrht_keyT* const restrict key){
